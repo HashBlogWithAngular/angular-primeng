@@ -1,0 +1,36 @@
+<div class="post-details-page">
+  <p-toolbar>
+    <div class="p-toolbar-group-start">
+      <app-sidenav></app-sidenav>
+      <a routerLink="/" class="logo">
+        <h1>{{blogName}}</h1>
+      </a>
+    </div>
+    <div class="p-toolbar-group-end">
+      <p-inputSwitch [(ngModel)]="checked" (click)="onThemeChange(checked ? 'dark' : 'light')"
+        id="theme-switch"></p-inputSwitch>
+    </div>
+  </p-toolbar>
+
+  @if (post$ | async; as post) {
+    <article>
+      <h1 class="title">{{ post.title }}</h1>
+      <img class="cover-image" [src]="post.coverImage.url" alt="Cover image for {{ post.title }}">
+      <div class="post-details">
+        <div class="author-info">
+          <img class="author-image" [src]="post.author.profilePicture" alt="{{ post.author.name}}">
+          <div class="author-text">
+            <span class="author-name">{{post.author.name}}</span>
+            <div class="post-meta">
+              <p-tag value="{{post.publishedAt | date: 'MMM dd, yyyy' }}"><i
+                  class="tag-icon pi pi-calendar"></i></p-tag>
+              <p-tag value="{{post.readTimeInMinutes}} min read"><i class="tag-icon pi pi-book"></i></p-tag>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content" [innerHTML]="post.content.html | sanitizerHtml"></div>
+    </article>
+  }
+  <app-footer></app-footer>
+</div>

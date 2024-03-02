@@ -1,0 +1,53 @@
+.search-input-container {
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+.search-input {
+  width: 100%;
+}
+
+.input-clear-icon {
+  cursor: pointer;
+}
+
+.search-icon {
+  margin-right: 0.6rem;
+}
+
+.no-result-text {
+  text-align: center;
+}
+
+.search-result {
+  display: flex;
+  margin-bottom: 0.6rem;
+  align-items: center;
+  padding: 0.6rem;
+  border-radius: 0.3rem;
+
+  .post-title {
+    margin-bottom: 0.3rem;
+  }
+
+  .author-name {
+    font-size: small;
+    margin-top: 0;
+  }
+
+  .post-info {
+    color: var(--text-color-secondary);
+    font-size: 0.9rem;
+  }
+
+  img {
+    height: 7rem;
+    margin-left: auto;
+    border-radius: 0.3rem;
+  }
+}
+
+.search-result:hover {
+  cursor: pointer;
+  background-color: var(--surface-100);
+}

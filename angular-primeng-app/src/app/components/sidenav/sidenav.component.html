@@ -1,0 +1,27 @@
+<p-sidebar [(visible)]="sidebarVisible">
+  <div class="sidenav-menu">
+    <div class="series">
+      <h3>Series</h3>
+      @for (series of seriesList; track series) {
+      <a [routerLink]="'../../series/' + series.slug" class="series-link">{{series.name}}</a>
+      }
+    </div>
+    <div class="social">
+      <div class="social-link">
+        @for (social of blogSocialLinks | keyvalue; track social) {
+        @if (social.value && social.key !== 'website') {
+        <a href="{{social.value}}" target="_blank" rel="noopener noreferrer">
+          <i class="pi pi-{{social.key}}"></i>
+        </a>
+        }
+        @if (social.value && social.key === 'website') {
+        <a href="{{social.value}}" target="_blank" rel="noopener noreferrer">
+          <i class="pi pi-globe"></i>
+        </a>
+        }
+        }
+      </div>
+    </div>
+  </div>
+</p-sidebar>
+<p-button (click)="sidebarVisible = true" icon="pi pi-bars"></p-button>

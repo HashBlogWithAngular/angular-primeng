@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-card {
+  width: 20vw;
+  margin: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .p-card {
+    height: 100%;
+  }
+
+  .p-card-title {
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    font-weight: 500;
+  }
+
+  .p-card-content {
+    display: none;
+  }
+}
+
+.card-image {
+  width: 100%;
+  height: 10rem;
+  overflow: hidden;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  object-fit: cover;
+}
+
+article {
+  pre {
+    line-height: 2.2rem;
+    padding: 1rem 1.5rem 1rem;
+    border-radius: 0.3rem;
+    position: relative;
+
+    .hljs-keyword {
+      color: #f92672;
+    }
+
+    .hljs-built_in {
+      color: #e6db74;
+    }
+  }
+}

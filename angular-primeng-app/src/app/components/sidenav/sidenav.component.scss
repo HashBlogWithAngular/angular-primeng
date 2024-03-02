@@ -1,0 +1,33 @@
+
+.sidenav-menu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+  padding: 1rem;
+
+  .series {
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      font-weight: 400;
+      text-transform: uppercase;
+      margin: 0 0 0.5rem 0;
+    }
+  }
+
+  .social {
+    display: flex;
+    width: 100%;
+    margin: 1rem 0;
+
+    a {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+p-button {
+  margin-right: 1rem;
+}
+

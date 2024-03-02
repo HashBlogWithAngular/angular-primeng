@@ -1,0 +1,36 @@
+<p-button class="transparent-button search-button" icon="pi pi-search"
+          [text]="true" [rounded]="true" (click)="showDialog()"></p-button>
+
+<p-dialog [(visible)]="visible" position="top" [modal]="true"
+          [style]="{ width: '60%', marginTop: '150px', maxHeight: '70%' }" [draggable]="false"
+          [dismissableMask]="true" header="Search posts">
+
+  <span class="search-input-container p-input-icon-right">
+    @if (queryFormControl.value) {
+      <i class="pi pi-times input-clear-icon" (click)="clearQuery()"></i>
+    }
+    <input class="search-input" type="text" pInputText placeholder="Start typing to search..."
+           [formControl]="queryFormControl">
+  </span>
+
+
+  @if (queryFormControl.value && posts.length !== 0) {
+    @for (post of posts; track post.id) {
+      <div class="search-result" (click)="navigateToPost(post.slug)">
+        <div class="info-section">
+          <h3 class="post-title">{{ post.title }}</h3>
+          <p class="author-name post-info">{{ post.author.name }}</p>
+          <p class="post-info">{{ post.publishedAt | date }}</p>
+        </div>
+
+        <img [src]="post.coverImage.url" [alt]="post.title + ' cover image'">
+      </div>
+    }
+  } @else {
+    @if (queryFormControl.value) {
+      <p class="no-result-text"><i class="pi pi-search search-icon"></i>No matching articles found. Try another search</p>
+    } @else {
+      <p class="no-result-text"><i class="pi pi-search search-icon"></i>Search articles from this blog</p>
+    }
+  }
+</p-dialog>
