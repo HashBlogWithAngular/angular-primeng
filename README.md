@@ -1,5 +1,5 @@
 Use this version of 
-## ![angular logo](/hashnodeng.png) HashnodeNG 
+## ![angular logo](/AnguHashBlog.png) AnguHashBlog 
 which allows you to connect your Hashnode Blog to
 # ![angular logo](/angular.png) Angular 
 
