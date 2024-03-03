@@ -1,4 +1,4 @@
-# Contributing to HashnodeNG
+# Contributing to AnguHashBlog
 
 First off, thanks for taking the time to contribute! ❤️
 
@@ -33,7 +33,7 @@ Instead, we recommend using Discussions to ask support-related questions.
 
 ## Found a Bug?
 
-If you find a bug in the source code, you can help by [submitting an issue](#submitting-an-issue) to  [HashnodeNG](https://github.com/HashnodeNG/angular-primeng/issues).
+If you find a bug in the source code, you can help by [submitting an issue](#submitting-an-issue) to  [AnguHashBlog](https://github.com/AnguHashBlog/angular-primeng/issues).
 Even better, you can [submit a Pull Request](#submitting-a-pull-request-pr) with a fix.
 
 
@@ -60,14 +60,14 @@ To expedite bug fixes, a minimal reproduction of the issue is required. This con
 
 Providing a minimal reproduction is crucial for saving time, increasing the chances of a quick resolution, and ensuring that focus is given to the correct issue.
 
-You can file new issues by selecting from our [new issue templates](https://github.com/HashnodeNG/angular-primeng/issues/new/choose) and filling out the issue template.
+You can file new issues by selecting from our [new issue templates](https://github.com/AnguHashBlog/angular-primeng/issues/new/choose) and filling out the issue template.
 
 
 ### Submitting a Pull Request (PR)
 
 Before you submit your Pull Request (PR) consider the following guidelines:
 
-1. Search [GitHub](https://github.com/HashnodeNG/angular-primeng/pulls) for an open or closed PR that relates to your submission.
+1. Search [GitHub](https://github.com/AnguHashBlog/angular-primeng/pulls) for an open or closed PR that relates to your submission.
    You don't want to duplicate existing efforts.
 
 2. Be sure that an issue describes the problem you're fixing, or documents the design for the feature you'd like to add.
@@ -101,7 +101,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
     git push origin my-fix-branch
     ```
 
-10. In GitHub, send a pull request to `HashnodeNG/angular-primeng:develop`.
+10. In GitHub, send a pull request to `AnguHashBlog/angular-primeng:develop`.
 
 ### Reviewing a Pull Request
 

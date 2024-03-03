@@ -1,6 +1,6 @@
 import { gql } from "apollo-angular";
 
-export const BLOG_HOST = "hashnode-blog.hashnodeng.com";
+export const BLOG_HOST = "hashnode.anguhashblog.com";
 
 export const GET_BLOG_INFO = gql`
 query Publication {
