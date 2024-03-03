@@ -1,5 +1,5 @@
 {
-  "name": "angular-v17-prime-ng",
+  "name": "angular-primeng-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,7 @@
     "build:prod": "ng build --configuration=production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:angular-primeng-app": "node dist/angular-v17-prime-ng/server/server.mjs"
+    "serve:ssr:angular-primeng-app": "node dist/angular-primeng-app/server/server.mjs"
   },
   "private": true,
   "dependencies": {
