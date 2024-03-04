@@ -16,6 +16,7 @@ import { ButtonModule } from "primeng/button";
 import { InputSwitchModule } from "primeng/inputswitch";
 
 import { SanitizerHtmlPipe } from "../../pipes/sanitizer-html.pipe";
+import { SearchDialogComponent } from "../../partials/search-dialog/search-dialog.component";
 
 @Component({
   selector: 'app-post-details',
@@ -31,41 +32,39 @@ import { SanitizerHtmlPipe } from "../../pipes/sanitizer-html.pipe";
     ToolbarModule,
     ButtonModule,
     InputSwitchModule,
-    SanitizerHtmlPipe
+    SanitizerHtmlPipe,
+    SearchDialogComponent
   ],
   templateUrl: './post-details.component.html',
   styleUrl: './post-details.component.scss'
 })
-export class PostDetailsComponent implements OnInit, OnDestroy {
+export class PostDetailsComponent implements OnInit {
   post$!: Observable<Post>;
   blogInfo!: BlogInfo;
+  blogId: string = "";
   blogName: string = "";
-	blogSocialLinks!: BlogLinks;
-	checked: boolean = true;
-	selectedTheme: string = "dark";
-  route: ActivatedRoute = inject(ActivatedRoute);
-  private blogService: BlogService = inject(BlogService);
+  checked: boolean = true;
+  selectedTheme: string = "dark";
   themeService: ThemeService = inject(ThemeService);
-  private querySubscription?: Subscription;
+  private blogService: BlogService = inject(BlogService);
 
-  @Input({ required: true }) slug!: string;
+  @Input({required: true})
+  set slug(slug: string) {
+    this.post$ = this.blogService.getSinglePost(slug);
+  }
 
   ngOnInit(): void {
-    this.querySubscription = this.blogService
-    .getBlogInfo()
-    .subscribe((data) => {
-      this.blogInfo = data;
-      this.blogName = this.blogInfo.title;
-    });
-    this.post$ = this.blogService.getSinglePost(this.slug);
+    this.blogService
+      .getBlogInfo()
+      .subscribe((data) => {
+        this.blogInfo = data;
+        this.blogId = this.blogInfo.id;
+        this.blogName = this.blogInfo.title;
+      });
   }
 
   onThemeChange(theme: string): void {
-		this.selectedTheme = theme;
-		this.themeService.setTheme(theme);
-	}
-
-  ngOnDestroy(): void {
-    this.querySubscription?.unsubscribe();
+    this.selectedTheme = theme;
+    this.themeService.setTheme(theme);
   }
 }

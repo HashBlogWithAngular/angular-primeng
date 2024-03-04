@@ -7,6 +7,7 @@
       </a>
     </div>
     <div class="p-toolbar-group-end">
+      <app-search-dialog [blogId]="blogId"></app-search-dialog>
       <p-inputSwitch [(ngModel)]="checked" (click)="onThemeChange(checked ? 'dark' : 'light')"
         id="theme-switch"></p-inputSwitch>
     </div>
