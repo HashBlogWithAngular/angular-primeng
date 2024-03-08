@@ -1,4 +1,6 @@
-Use this version of 
+# Angular PrimeNG App
+
+Use this app version of 
 ## ![anguhashblog logo](/anguhashblog.png) AnguHashBlog 
 which allows you to connect your Hashnode Blog to
 # ![angular logo](/angular.png) Angular 
