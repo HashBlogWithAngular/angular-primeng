@@ -1,11 +1,13 @@
 <div class="posts-view">
   <div class="cards-wrapper grid">
     @for (post of posts$ | async; track post.id) {
-    <p-card class="post-card" header="{{ post.title }}" (click)="navigateToPost(post.slug)">
-      <ng-template pTemplate="header">
-        <img class="card-image" [src]="post.coverImage.url" [alt]="post.title + ' image'" />
-      </ng-template>
-    </p-card>
+    <a [routerLink]="['post', post.slug]">
+      <p-card class="post-card" header="{{ post.title }}">
+        <ng-template pTemplate="header">
+          <img class="card-image" [src]="post.coverImage.url" [alt]="post.title + ' image'" />
+        </ng-template>
+      </p-card>
+    </a>
     }
   </div>
 </div>

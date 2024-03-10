@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Params, RouterLink } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
 import { Post } from '../../models/post';
 import { AsyncPipe } from "@angular/common";
@@ -18,7 +18,6 @@ export class SeriesComponent {
   slug: string = "";
   postsInSeries$!: Observable<Post[]>;
   blogService: BlogService = inject(BlogService);
-  private router = inject(Router);
 	route: ActivatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
@@ -30,8 +29,4 @@ export class SeriesComponent {
       })
     );
 	}
-
-  navigateToPost(slug: string) {
-    this.router.navigate(['/post', slug]);
-  }
 }
