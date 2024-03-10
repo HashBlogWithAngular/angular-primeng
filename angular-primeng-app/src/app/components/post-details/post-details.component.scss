@@ -75,6 +75,11 @@
     .content {
       font-size: 1rem;
       line-height: 1.5rem;
+
+      iframe {
+        width: 100%;
+        height: calc(50vw * 0.5625);
+      }
     }
   }
 

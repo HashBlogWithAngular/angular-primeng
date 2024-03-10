@@ -3,7 +3,7 @@ import { BlogService } from "../../services/blog.service";
 import { AsyncPipe, DatePipe } from "@angular/common";
 import { Post, SeriesList } from "../../models/post";
 import { Observable, Subscription } from "rxjs";
-import { ActivatedRoute, RouterLink } from "@angular/router";
+import { RouterLink } from "@angular/router";
 import { BlogInfo, BlogLinks } from "../../models/blog-info";
 import { FormsModule } from "@angular/forms";
 import { SidenavComponent } from "../sidenav/sidenav.component";
@@ -15,7 +15,8 @@ import { TagModule } from "primeng/tag";
 import { ToolbarModule } from "primeng/toolbar";
 import { ButtonModule } from "primeng/button";
 import { InputSwitchModule } from "primeng/inputswitch";
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import { SanitizerHtmlPipe } from "../../pipes/sanitizer-html.pipe";
+import { YoutubeVideoEmbedDirective } from "../../directives/youtube-video-embed.directive";
 
 @Component({
 	selector: "app-post-details",
@@ -23,9 +24,11 @@ import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 	imports: [
 		DatePipe,
 		AsyncPipe,
+    SanitizerHtmlPipe,
 		RouterLink,
 		SidenavComponent,
 		FooterComponent,
+    YoutubeVideoEmbedDirective,
 		FormsModule,
 		TagModule,
 		ToolbarModule,
@@ -47,7 +50,6 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 	seriesList!: SeriesList[];
 	post$!: Observable<Post>;
 	themeService: ThemeService = inject(ThemeService);
-  private sanitizer: DomSanitizer = inject(DomSanitizer);
 	private blogService: BlogService = inject(BlogService);
   private querySubscription?: Subscription;
 
@@ -70,10 +72,6 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 			.subscribe((data) => {
 				this.seriesList = data;
 			});
-	}
-
-	sanitizeHtml(html: string): SafeHtml {
-		return this.sanitizer.bypassSecurityTrustHtml(html);
 	}
 
 	onThemeChange(theme: string): void {
