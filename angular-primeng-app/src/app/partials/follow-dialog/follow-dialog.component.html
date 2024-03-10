@@ -1,0 +1,10 @@
+<p-button (click)="showDialog()" label="Follow" [raised]="true"></p-button>
+
+<p-dialog [(visible)]="visible" [style]="{width: '27vw'}">
+  <div class="logo-wrapper">
+    <img class="logo" src="/assets/images/anguhashblog-logo-purple-bgr.jpg" alt="">
+  </div>
+  <h3>Hey, 👋 sign up or sign in to interact.</h3>
+  <a class="button" href="https://hashnode.com/" target="_blank" rel="noopener noreferrer"><img src="/assets/images/hashnode-logo-white.png" alt="Sign in">Sign in with Hashnode</a>
+  <p>This blog is powered by <a class="link" href="https://hashnode.com/" target="_blank" rel="noopener noreferrer">Hashnode</a>. To interact with the content on this blog, please log in through Hashnode.</p>
+</p-dialog>

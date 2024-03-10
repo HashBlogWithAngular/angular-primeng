@@ -13,6 +13,8 @@ import { ToolbarModule } from "primeng/toolbar";
 import { ButtonModule } from "primeng/button";
 import { InputSwitchModule } from "primeng/inputswitch";
 import { DialogModule } from "primeng/dialog";
+import { SettingsDialogComponent } from "../../partials/settings-dialog/settings-dialog.component";
+import { FollowDialogComponent } from "../../partials/follow-dialog/follow-dialog.component";
 
 @Component({
 	selector: "app-header",
@@ -20,6 +22,8 @@ import { DialogModule } from "primeng/dialog";
   imports: [
     AsyncPipe,
     SearchDialogComponent,
+    SettingsDialogComponent,
+    FollowDialogComponent,
     ButtonModule,
     FormsModule,
     InputSwitchModule,
@@ -85,10 +89,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	onThemeChange(theme: string): void {
 		this.selectedTheme = theme;
 		this.themeService.setTheme(theme);
-	}
-
-	showDialog() {
-		this.visible = true;
 	}
 
   ngOnDestroy(): void {
