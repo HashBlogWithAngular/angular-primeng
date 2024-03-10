@@ -22,6 +22,7 @@ import { KeyValuePipe } from '@angular/common';
 })
 export class SidenavComponent implements OnInit, OnDestroy {
   sidebarVisible: boolean = false;
+  blogURL!: string;
   blogInfo!: BlogInfo;
   blogSocialLinks!: BlogLinks;
   seriesList!: SeriesList[];
@@ -29,15 +30,16 @@ export class SidenavComponent implements OnInit, OnDestroy {
   private querySubscription?: Subscription;
 
   ngOnInit(): void {
+    this.blogURL = this.blogService.getBlogURL();
     this.querySubscription = this.blogService
-      .getBlogInfo()
+      .getBlogInfo(this.blogURL)
       .subscribe((data) => {
         this.blogInfo = data;
         const { __typename, ...links } = data.links;
         this.blogSocialLinks = links;
       });
     this.querySubscription = this.blogService
-      .getSeriesList()
+      .getSeriesList(this.blogURL)
       .subscribe((data) => {
         this.seriesList = data;
       });

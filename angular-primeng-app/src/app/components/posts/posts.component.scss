@@ -8,6 +8,10 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 2rem 1rem;
+
+    .post-card {
+      display: flex;
+    }
   }
 }
 

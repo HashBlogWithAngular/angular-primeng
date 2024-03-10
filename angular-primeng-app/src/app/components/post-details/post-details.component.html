@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <div class="content" [innerHTML]="sanitizeHtml(post.content.html)"></div>
+      <div class="content" [innerHTML]="post.content.html | sanitizerHtml" youtubeVideoEmbed></div>
     </article>
   }
   <app-footer></app-footer>

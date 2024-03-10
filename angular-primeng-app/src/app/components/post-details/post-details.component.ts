@@ -1,10 +1,10 @@
 import { Component, inject, Input, OnDestroy, OnInit } from "@angular/core";
 import { BlogService } from "../../services/blog.service";
 import { AsyncPipe, DatePipe } from "@angular/common";
-import { Post } from "../../models/post";
+import { Post, SeriesList } from "../../models/post";
 import { Observable, Subscription } from "rxjs";
-import { ActivatedRoute, RouterLink } from "@angular/router";
-import { BlogInfo } from "../../models/blog-info";
+import { RouterLink } from "@angular/router";
+import { BlogInfo, BlogLinks } from "../../models/blog-info";
 import { FormsModule } from "@angular/forms";
 import { SidenavComponent } from "../sidenav/sidenav.component";
 import { SearchDialogComponent } from "../../partials/search-dialog/search-dialog.component";
@@ -15,7 +15,8 @@ import { TagModule } from "primeng/tag";
 import { ToolbarModule } from "primeng/toolbar";
 import { ButtonModule } from "primeng/button";
 import { InputSwitchModule } from "primeng/inputswitch";
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import { SanitizerHtmlPipe } from "../../pipes/sanitizer-html.pipe";
+import { YoutubeVideoEmbedDirective } from "../../directives/youtube-video-embed.directive";
 
 @Component({
 	selector: "app-post-details",
@@ -23,9 +24,11 @@ import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 	imports: [
 		DatePipe,
 		AsyncPipe,
+    SanitizerHtmlPipe,
 		RouterLink,
 		SidenavComponent,
 		FooterComponent,
+    YoutubeVideoEmbedDirective,
 		FormsModule,
 		TagModule,
 		ToolbarModule,
@@ -36,36 +39,47 @@ import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 	templateUrl: "./post-details.component.html",
 	styleUrl: "./post-details.component.scss",
 })
-export class PostDetailsComponent implements OnInit {
-	post$!: Observable<Post>;
-	blogInfo!: BlogInfo;
-	blogId: string = "";
-	blogName: string = "";
+export class PostDetailsComponent implements OnInit, OnDestroy {
 	checked: boolean = true;
 	selectedTheme: string = "dark";
+  blogURL!: string;
+	blogInfo!: BlogInfo;
+  blogId: string = "";
+	blogName: string = "";
+  blogSocialLinks!: BlogLinks;
+	seriesList!: SeriesList[];
+	post$!: Observable<Post>;
 	themeService: ThemeService = inject(ThemeService);
-  private sanitizer: DomSanitizer = inject(DomSanitizer);
 	private blogService: BlogService = inject(BlogService);
+  private querySubscription?: Subscription;
 
-	@Input({ required: true })
-	set slug(slug: string) {
-		this.post$ = this.blogService.getSinglePost(slug);
-	}
+	@Input({ required: true }) slug!: string;
 
-	ngOnInit(): void {
-		this.blogService.getBlogInfo().subscribe((data) => {
-			this.blogInfo = data;
-			this.blogId = this.blogInfo.id;
-			this.blogName = this.blogInfo.title;
-		});
-	}
-
-	sanitizeHtml(html: string): SafeHtml {
-		return this.sanitizer.bypassSecurityTrustHtml(html);
+  ngOnInit(): void {
+    this.blogURL = this.blogService.getBlogURL();
+		this.querySubscription = this.blogService
+			.getBlogInfo(this.blogURL)
+			.subscribe((data) => {
+				this.blogInfo = data;
+        this.blogId = this.blogInfo.id;
+				this.blogName = this.blogInfo.title;
+        const { __typename, ...links } = data.links;
+        this.blogSocialLinks = links;
+			});
+		this.post$ = this.blogService.getSinglePost(this.blogURL,this.slug);
+		this.querySubscription = this.blogService
+			.getSeriesList(this.blogURL)
+			.subscribe((data) => {
+				this.seriesList = data;
+			});
 	}
 
 	onThemeChange(theme: string): void {
 		this.selectedTheme = theme;
 		this.themeService.setTheme(theme);
+	}
+
+	ngOnDestroy(): void {
+		this.querySubscription?.unsubscribe();
 	}
 }

@@ -1,0 +1,50 @@
+p-dialog {
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .logo {
+      width: 5rem;
+      height: 5rem;
+      margin: 1rem;
+      border-radius: 50%;
+    }
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2563eb;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 0.7rem 3rem;
+    margin: 2rem 1rem;
+    border: none;
+    border-radius: 3rem;
+
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .link {
+    color: #2563eb;
+    font-size: 0.8.5rem;
+    margin: 0;
+  }
+
+  p {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}

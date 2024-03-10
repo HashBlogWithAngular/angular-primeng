@@ -1,0 +1,33 @@
+<p-button class="transparent-button search-button" icon="pi pi-cog" [rounded]="true" [text]="true" [raised]="true"
+  (click)="showDialog()"></p-button>
+
+<p-dialog [(visible)]="visible" [style]="{width: '27vw'}">
+  @if (blogURLChanged) {
+    <div class="dialog-content">
+      <p>Blog URL changed and set in local storage</p>
+      <p>Reload the page to see your content loading</p>
+      <p>When resetting you may need to click on</p>
+      <p>the logo image to load the content again</p>
+      <div class="dialog-actions">
+        <p-button label="Reset" (click)="resetBlogURL()" class="p-button-secondary"></p-button>
+      </div>
+    </div>
+    } @else {
+    <div class="dialog-content">
+      <h3>Try with your Blog</h3>
+      <p>try AnguHashBlog</p>
+      <small>with another Hashnode blog </small>
+      <span class="p-input-icon-right">
+        @if (newBlogURL) {
+          <i class="pi pi-times" (click)="newBlogURL=''"></i>
+        }
+        <input type="text" pInputText placeholder="Type a Blog URL" [(ngModel)]="newBlogURL" />
+     </span>
+    </div>
+    <div class="dialog-actions">
+      <div class="dialog-actions">
+        <p-button label="Change" (click)="changeBlogURL(); newBlogURL=''" class="p-button-secondary"></p-button>
+      </div>
+    </div>
+    }
+</p-dialog>
