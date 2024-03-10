@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
 import { Subscription } from 'rxjs';
 
 import { ToolbarModule } from 'primeng/toolbar';
+import { BlogInfo } from '../../models/blog-info';
 
 @Component({
   selector: 'app-footer',
@@ -12,17 +13,17 @@ import { ToolbarModule } from 'primeng/toolbar';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
+  blogURL!: string;
+  blogInfo!: BlogInfo;
   blogName = '';
-
   date = new Date().getFullYear();
+  blogService: BlogService = inject(BlogService);
 
   private querySubscription?: Subscription;
 
-  constructor(private blogService: BlogService) {
-  }
-
   ngOnInit() {
-    this.querySubscription = this.blogService.getBlogInfo()
+    this.blogURL = this.blogService.getBlogURL();
+    this.querySubscription = this.blogService.getBlogInfo(this.blogURL)
       .subscribe((data) => this.blogName = data.title);
   }
 

@@ -31,7 +31,6 @@ export class SearchDialogComponent implements OnInit {
   blogService: BlogService = inject(BlogService);
   router: Router = inject(Router);
 
-
   ngOnInit() {
     this.queryFormControl.valueChanges.subscribe(query => this.searchPosts(query));
   }
@@ -44,7 +43,6 @@ export class SearchDialogComponent implements OnInit {
     this.blogService.searchPosts(this.blogId, query)
       .subscribe(response => {
         this.posts = response;
-        console.log(this.posts);
       });
   }
 

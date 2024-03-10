@@ -14,6 +14,7 @@ import { CardModule } from 'primeng/card';
   styleUrl: './series.component.scss'
 })
 export class SeriesComponent {
+  blogURL!: string;
   slug: string = "";
   postsInSeries$!: Observable<Post[]>;
   blogService: BlogService = inject(BlogService);
@@ -21,10 +22,11 @@ export class SeriesComponent {
 	route: ActivatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
+    this.blogURL = this.blogService.getBlogURL();
 		this.postsInSeries$ = this.route.params.pipe(
       switchMap((params: Params) => {
         this.slug = params["slug"];
-        return this.blogService.getPostsInSeries(this.slug);
+        return this.blogService.getPostsInSeries(this.blogURL, this.slug);
       })
     );
 	}
