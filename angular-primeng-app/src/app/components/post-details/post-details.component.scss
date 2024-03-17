@@ -1,18 +1,4 @@
 .post-details-page {
-  p-toolbar {
-    .p-toolbar-group-start {
-      h1 {
-        font-size: 1.3rem;
-        font-weight: 500;
-        margin: 0;
-      }
-    }
-
-    .p-toolbar-group-end {
-      gap: 0.625rem;
-    }
-  }
-
   article {
     margin: 0 auto;
     max-width: 50vw;
@@ -82,5 +68,4 @@
       }
     }
   }
-
 }

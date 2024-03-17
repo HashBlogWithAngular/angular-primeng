@@ -53,7 +53,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 	private blogService: BlogService = inject(BlogService);
   private querySubscription?: Subscription;
 
-	@Input({ required: true }) slug!: string;
+	@Input({ required: true }) postSlug!: string;
 
   ngOnInit(): void {
     this.blogURL = this.blogService.getBlogURL();
@@ -66,7 +66,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
         const { __typename, ...links } = data.links;
         this.blogSocialLinks = links;
 			});
-		this.post$ = this.blogService.getSinglePost(this.blogURL,this.slug);
+		this.post$ = this.blogService.getSinglePost(this.blogURL, this.postSlug);
 		this.querySubscription = this.blogService
 			.getSeriesList(this.blogURL)
 			.subscribe((data) => {

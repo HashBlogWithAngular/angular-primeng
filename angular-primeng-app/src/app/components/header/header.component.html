@@ -1,41 +1,65 @@
 <p-toolbar>
-  <div class="toolbar-row">
-    <a class="logo" routerLink="/">
-      <img src="../../../assets/images/anguhashblog-logo-purple-bgr.jpg" alt="logo" />
-      <h1>{{ blogName }}</h1>
-    </a>
-    <div class="controls">
-      <app-search-dialog [blogId]="blogId"></app-search-dialog>
-      <app-settings-dialog></app-settings-dialog>
-      <p-inputSwitch [(ngModel)]="checked" (click)="onThemeChange(checked ? 'dark' : 'light')" id="theme-switch"></p-inputSwitch>
+  <div class="toolbar-row first">
+    <div class="p-toolbar-group-start">
+      @if (showMainHeader) {
+      <a routerLink="/" class="blog-title">
+        <img class="logo-image" src="{{blogImage}}" alt="logo" />
+      </a>
+      } @else {
+      <app-sidenav></app-sidenav>
+      }
+      <a routerLink="/" class="blog-title">
+        <h1>{{blogName}}</h1>
+      </a>
     </div>
-  </div>
-  <div class="toolbar-row">
-    <div class="social">
-      <div class="social-link">
-        @for (social of blogSocialLinks | keyvalue; track social) {
-        @if (social.value && social.key !== 'website') {
-        <a href="{{social.value}}" target="_blank" rel="noopener noreferrer">
-          <i class="pi pi-{{social.key}}"></i>
-        </a>
+
+    <div class="p-toolbar-group-end">
+      <div class="controls">
+        @if (showMainHeader) {
+        <app-search-dialog [blogId]="blogId"></app-search-dialog>
+        <app-settings-dialog></app-settings-dialog>
         }
-        @if (social.value && social.key === 'website') {
-        <a href="{{social.value}}" target="_blank" rel="noopener noreferrer">
-          <i class="pi pi-globe"></i>
-        </a>
-        }
-        }
+        <p-inputSwitch [(ngModel)]="checked" (click)="onThemeChange(checked ? 'dark' : 'light')"
+          id="theme-switch"></p-inputSwitch>
       </div>
     </div>
-    <div class="follow">
-      <app-follow-dialog></app-follow-dialog>
+  </div>
+
+  @if (showMainHeader) {
+  <div class="toolbar-row second">
+    <div class="p-toolbar-group-start">
+      <div class="social">
+        <div class="social-link">
+          @for (social of blogSocialLinks | keyvalue; track social) {
+          @if (social.value && social.key !== 'website') {
+          <a href="{{social.value}}" target="_blank" rel="noopener noreferrer">
+            <i class="pi pi-{{social.key}}"></i>
+          </a>
+          }
+          @if (social.value && social.key === 'website') {
+          <a href="{{social.value}}" target="_blank" rel="noopener noreferrer">
+            <i class="pi pi-globe"></i>
+          </a>
+          }
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="p-toolbar-group-end">
+      <div class="follow">
+        <app-follow-dialog></app-follow-dialog>
+      </div>
     </div>
   </div>
-  <div class="toolbar-row">
+
+  <div class="toolbar-row third">
     <div class="series">
       @for (series of seriesList; track series) {
       <a [routerLink]="'series/' + series.slug" class="topic-link">{{ series.name}}</a>
       }
     </div>
   </div>
+  }
+
 </p-toolbar>

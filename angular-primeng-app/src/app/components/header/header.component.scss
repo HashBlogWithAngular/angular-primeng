@@ -14,39 +14,54 @@ p-toolbar {
       margin: 0 0.3rem;
     }
 
-    .logo {
+    .p-toolbar-group-start {
       display: flex;
       align-items: center;
 
-      img {
+      .logo-image {
         width: 3rem;
         height: 3rem;
         margin-right: 0.5rem;
         border-radius: 50%;
       }
 
-      h1 {
-        font-size: 1.3rem;
-        font-weight: 500;
+      .blog-title {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        h1 {
+          font-size: 1.3rem;
+          font-weight: 400;
+          margin: 0;
+        }
       }
-    }
 
-    .social {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      margin: 0.8rem 0 0.5rem;
+      .social {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 0.8rem 0 0.5rem;
 
-      a {
+        a {
 
-        i {
-          font-size: 1.1rem;
+          i {
+            font-size: 1.1rem;
+          }
         }
       }
     }
 
-    .follow {
-      padding-bottom: 0.7rem;
+    .p-toolbar-group-end {
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .follow {
+        padding-bottom: 0.7rem;
+      }
     }
 
     .series {
@@ -64,8 +79,4 @@ p-toolbar {
   }
 }
 
-.controls {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+
