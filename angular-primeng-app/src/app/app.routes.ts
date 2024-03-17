@@ -23,5 +23,9 @@ export const routes: Routes = [
   {
     path: 'post/:slug',
     component: PostDetailsComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
