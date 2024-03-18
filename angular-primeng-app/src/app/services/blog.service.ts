@@ -106,23 +106,24 @@ export class BlogService {
 			);
 	}
 
-	getPostsInSeries(host: string, slug: string): Observable<Post[]> {
-		return this.apollo
-			.watchQuery<any>({
-				query: GET_POSTS_IN_SERIES,
-				variables: {
-					host: host,
-					slug: slug,
-				},
-			})
-			.valueChanges.pipe(
-				map(({ data }) =>
-					data.publication.series.posts.edges.map(
-						(edge: { node: any }) => edge.node
-					)
-				)
-			);
-	}
+  getPostsInSeries(host: string, slug: string, after: string = ""): Observable<PostsPageInfo> {
+    return this.apollo
+      .watchQuery<any>({
+        query: GET_POSTS_IN_SERIES,
+        variables: {
+          host: host,
+          slug: slug,
+          after: after
+        },
+      }).valueChanges.pipe(
+        map(({ data }) => {
+          const { edges, pageInfo } = data.publication.series.posts;
+          return {
+            posts: edges.map((edge: { node: any; }) => edge.node),
+            pagination: pageInfo
+          };
+        }));
+  }
 
 	getSinglePost(host: string, slug: string): Observable<Post> {
 		return this.apollo

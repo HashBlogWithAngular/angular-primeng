@@ -1,6 +1,7 @@
-<div class="series-view">
+<div class="series-view"  infiniteScroll [isActiveInfiniteScroll]="isActiveInfiniteScroll"
+     (scrolled)="loadMorePostsFromSeries()">
   <div class="cards-wrapper grid">
-    @for (post of postsInSeries$ | async; track post.id) {
+    @for (post of postsInSeries; track post) {
       <a [routerLink]="['/post', post.slug]">
         <p-card class="post-card" header="{{ post.title }}">
           <ng-template pTemplate="header">
@@ -10,4 +11,10 @@
       </a>
     }
   </div>
+
+  @if (paginationInfo.hasNextPage && !isHiddenLoadMore) {
+    <div class="load-more-posts">
+      <p-button (click)="loadMorePostsFromSeries()">Load more</p-button>
+    </div>
+  }
 </div>
