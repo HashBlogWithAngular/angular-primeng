@@ -10,7 +10,7 @@ import {
 	GET_SINGLE_POST,
 	SEARCH_POSTS,
 } from "../graphql.operations";
-import { Author, Post, SeriesList } from "../models/post";
+import { Author, Post, PostsPageInfo, SeriesList } from "../models/post";
 import { BlogInfo } from "../models/blog-info";
 import { isPlatformBrowser } from "@angular/common";
 
@@ -70,19 +70,23 @@ export class BlogService {
 			.valueChanges.pipe(map(({ data }) => data.publication.author));
 	}
 
-	getPosts(host: string): Observable<Post[]> {
+	getPosts(host: string, after: string): Observable<PostsPageInfo> {
 		return this.apollo
 			.watchQuery<any>({
 				query: GET_POSTS,
 				variables: {
 					host: host,
+          after: after
 				},
 			})
 			.valueChanges.pipe(
-				map(({ data }) =>
-					data.publication.posts.edges.map((edge: { node: any }) => edge.node)
-				)
-			);
+				map(({ data }) => {
+          const { edges, pageInfo } = data.publication.posts;
+          return {
+            posts: edges.map((edge: { node: any }) => edge.node),
+            pagination: pageInfo
+          }
+        }));
 	}
 
 	getSeriesList(host: string): Observable<SeriesList[]> {

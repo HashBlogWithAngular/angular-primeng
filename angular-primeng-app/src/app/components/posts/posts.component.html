@@ -1,13 +1,19 @@
-<div class="posts-view">
+<div class="posts-view" infiniteScroll [isActiveInfiniteScroll]="isActiveInfiniteScroll" (scrolled)="loadMorePosts()">
   <div class="cards-wrapper grid">
-    @for (post of posts$ | async; track post.id) {
-    <a [routerLink]="['post', post.slug]">
-      <p-card class="post-card" header="{{ post.title }}">
-        <ng-template pTemplate="header">
-          <img class="card-image" [src]="post.coverImage.url" [alt]="post.title + ' image'" />
-        </ng-template>
-      </p-card>
-    </a>
+    @for (post of posts; track post) {
+      <a [routerLink]="['post', post.slug]">
+        <p-card class="post-card" header="{{ post.title }}">
+          <ng-template pTemplate="header">
+            <img class="card-image" [src]="post.coverImage.url" [alt]="post.title + ' image'"/>
+          </ng-template>
+        </p-card>
+      </a>
     }
   </div>
+
+  @if (paginationInfo.hasNextPage && !isHiddenLoadMore) {
+    <div class="load-more-posts">
+      <p-button (click)="loadMorePosts()">Load more</p-button>
+    </div>
+  }
 </div>

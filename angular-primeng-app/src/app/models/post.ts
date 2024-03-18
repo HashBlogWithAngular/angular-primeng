@@ -47,3 +47,12 @@ export interface Content {
   html: string;
 }
 
+export interface PostsPageInfo {
+  posts: Post[];
+  pagination: PageInfo;
+}
+
+export interface PageInfo {
+  hasNextPage: boolean;
+  endCursor: string;
+}
