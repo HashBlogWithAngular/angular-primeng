@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PageInfo, Post } from '../../models/post';
-import { AsyncPipe } from "@angular/common";
+import { AsyncPipe, CommonModule } from "@angular/common";
 import { BlogService } from '../../services/blog.service';
 import { CardModule } from 'primeng/card';
 import { InfiniteScrollDirective } from "../../directives/infinite-scroll.directive";
@@ -10,7 +10,7 @@ import { ButtonModule } from "primeng/button";
 @Component({
   selector: 'app-series',
   standalone: true,
-  imports: [RouterLink, AsyncPipe, CardModule, InfiniteScrollDirective, ButtonModule],
+  imports: [RouterLink, AsyncPipe, CardModule, InfiniteScrollDirective, ButtonModule,CommonModule],
   templateUrl: './series.component.html',
   styleUrl: './series.component.scss'
 })
