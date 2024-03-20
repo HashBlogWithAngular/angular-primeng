@@ -6,11 +6,12 @@ import { BlogService } from '../../services/blog.service';
 import { CardModule } from 'primeng/card';
 import { InfiniteScrollDirective } from "../../directives/infinite-scroll.directive";
 import { ButtonModule } from "primeng/button";
+import { TruncatePipe } from '../../pipes/truncate.pipe';
 
 @Component({
   selector: 'app-series',
   standalone: true,
-  imports: [RouterLink, AsyncPipe, CardModule, InfiniteScrollDirective, ButtonModule],
+  imports: [RouterLink, AsyncPipe, CardModule, InfiniteScrollDirective, ButtonModule,TruncatePipe],
   templateUrl: './series.component.html',
   styleUrl: './series.component.scss'
 })
