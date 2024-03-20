@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
 import { RouterLink } from '@angular/router';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
 import { PageInfo, Post } from '../../models/post';
 import { InfiniteScrollDirective } from "../../directives/infinite-scroll.directive";
@@ -10,7 +10,7 @@ import { ButtonModule } from "primeng/button";
 @Component({
   selector: 'app-posts',
   standalone: true,
-  imports: [AsyncPipe, RouterLink, CardModule, InfiniteScrollDirective, ButtonModule],
+  imports: [AsyncPipe, RouterLink, CardModule, InfiniteScrollDirective, ButtonModule,CommonModule],
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.scss'
 })
