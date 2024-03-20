@@ -6,12 +6,11 @@ import { CardModule } from 'primeng/card';
 import { PageInfo, Post } from '../../models/post';
 import { InfiniteScrollDirective } from "../../directives/infinite-scroll.directive";
 import { ButtonModule } from "primeng/button";
-import { TruncatePipe } from '../../pipes/truncate.pipe';
 
 @Component({
   selector: 'app-posts',
   standalone: true,
-  imports: [AsyncPipe, RouterLink, CardModule, InfiniteScrollDirective, ButtonModule,TruncatePipe],
+  imports: [AsyncPipe, RouterLink, CardModule, InfiniteScrollDirective, ButtonModule],
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.scss'
 })
