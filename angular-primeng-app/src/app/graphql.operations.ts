@@ -48,12 +48,12 @@ export const GET_AUTHOR_INFO = gql`
 `;
 
 export const GET_POSTS = gql`
-	query Publication($host: String!) {
+	query Publication($host: String!, $after: String!) {
 		publication(host: $host) {
 			id
 			isTeam
 			title
-			posts(first: 10) {
+			posts(first: 10, after: $after) {
 				edges {
 					node {
 						id
@@ -67,6 +67,10 @@ export const GET_POSTS = gql`
 							html
 						}
 					}
+				}
+				pageInfo {
+					endCursor
+					hasNextPage
 				}
 			}
 		}
@@ -92,13 +96,13 @@ export const GET_SERIES_LIST = gql`
 `;
 
 export const GET_POSTS_IN_SERIES = gql`
-	query Publication($host: String!, $slug: String!) {
+	query Publication($host: String!, $slug: String!, $after: String!) {
 		publication(host: $host) {
 			id
 			isTeam
 			title
 			series(slug: $slug) {
-				posts(first: 10) {
+				posts(first: 10, after: $after) {
 					edges {
 						node {
 							id
@@ -108,6 +112,10 @@ export const GET_POSTS_IN_SERIES = gql`
 								url
 							}
 						}
+					}
+					pageInfo {
+						endCursor
+						hasNextPage
 					}
 				}
 			}

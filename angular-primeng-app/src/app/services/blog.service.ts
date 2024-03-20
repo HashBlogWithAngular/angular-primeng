@@ -10,7 +10,7 @@ import {
 	GET_SINGLE_POST,
 	SEARCH_POSTS,
 } from "../graphql.operations";
-import { Author, Post, SeriesList } from "../models/post";
+import { Author, Post, PostsPageInfo, SeriesList } from "../models/post";
 import { BlogInfo } from "../models/blog-info";
 import { isPlatformBrowser } from "@angular/common";
 
@@ -70,19 +70,23 @@ export class BlogService {
 			.valueChanges.pipe(map(({ data }) => data.publication.author));
 	}
 
-	getPosts(host: string): Observable<Post[]> {
+	getPosts(host: string, after: string): Observable<PostsPageInfo> {
 		return this.apollo
 			.watchQuery<any>({
 				query: GET_POSTS,
 				variables: {
 					host: host,
+          after: after
 				},
 			})
 			.valueChanges.pipe(
-				map(({ data }) =>
-					data.publication.posts.edges.map((edge: { node: any }) => edge.node)
-				)
-			);
+				map(({ data }) => {
+          const { edges, pageInfo } = data.publication.posts;
+          return {
+            posts: edges.map((edge: { node: any }) => edge.node),
+            pagination: pageInfo
+          }
+        }));
 	}
 
 	getSeriesList(host: string): Observable<SeriesList[]> {
@@ -102,23 +106,24 @@ export class BlogService {
 			);
 	}
 
-	getPostsInSeries(host: string, slug: string): Observable<Post[]> {
-		return this.apollo
-			.watchQuery<any>({
-				query: GET_POSTS_IN_SERIES,
-				variables: {
-					host: host,
-					slug: slug,
-				},
-			})
-			.valueChanges.pipe(
-				map(({ data }) =>
-					data.publication.series.posts.edges.map(
-						(edge: { node: any }) => edge.node
-					)
-				)
-			);
-	}
+  getPostsInSeries(host: string, slug: string, after: string = ""): Observable<PostsPageInfo> {
+    return this.apollo
+      .watchQuery<any>({
+        query: GET_POSTS_IN_SERIES,
+        variables: {
+          host: host,
+          slug: slug,
+          after: after
+        },
+      }).valueChanges.pipe(
+        map(({ data }) => {
+          const { edges, pageInfo } = data.publication.series.posts;
+          return {
+            posts: edges.map((edge: { node: any; }) => edge.node),
+            pagination: pageInfo
+          };
+        }));
+  }
 
 	getSinglePost(host: string, slug: string): Observable<Post> {
 		return this.apollo
