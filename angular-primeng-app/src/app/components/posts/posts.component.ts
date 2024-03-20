@@ -10,7 +10,7 @@ import { ButtonModule } from "primeng/button";
 @Component({
   selector: 'app-posts',
   standalone: true,
-  imports: [AsyncPipe, RouterLink, CardModule, InfiniteScrollDirective, ButtonModule,CommonModule],
+  imports: [AsyncPipe, RouterLink, CardModule, InfiniteScrollDirective, ButtonModule, CommonModule],
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.scss'
 })
