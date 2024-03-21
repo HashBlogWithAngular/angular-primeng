@@ -17,6 +17,7 @@ import { ButtonModule } from "primeng/button";
 import { InputSwitchModule } from "primeng/inputswitch";
 import { SanitizerHtmlPipe } from "../../pipes/sanitizer-html.pipe";
 import { YoutubeVideoEmbedDirective } from "../../directives/youtube-video-embed.directive";
+import { ViewportScroller } from "@angular/common";
 
 @Component({
 	selector: "app-post-details",
@@ -52,10 +53,12 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 	themeService: ThemeService = inject(ThemeService);
 	private blogService: BlogService = inject(BlogService);
   private querySubscription?: Subscription;
+  private readonly scroller = inject(ViewportScroller);
 
 	@Input({ required: true }) postSlug!: string;
 
   ngOnInit(): void {
+	this.scroller.scrollToPosition([0, 0]);
     this.blogURL = this.blogService.getBlogURL();
 		this.querySubscription = this.blogService
 			.getBlogInfo(this.blogURL)
