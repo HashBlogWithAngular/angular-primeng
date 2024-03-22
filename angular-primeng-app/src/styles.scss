@@ -65,3 +65,57 @@ article {
     }
   }
 }
+
+@media (max-width: 600px) {
+  .p-toolbar {
+    padding: 0.3rem 0 0.3rem 0.5rem;
+  }
+
+  app-sidenav {
+    .p-button {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .post-details-page {
+    article {
+      .content {
+        p {
+          font-size: 1.1rem;
+          line-height: 1.5rem;;
+        }
+        pre {
+          overflow-y: scroll;
+        }
+      }
+    }
+  }
+
+  // !important statement shall only be used if there are no alternatives, like in this case for overwriting very persistent styles set by PrimeNG
+
+  app-follow-dialog {
+    .p-dialog {
+      width: 85vw !important;
+    }
+  }
+
+  // negative margin shall also only be used if there are no alternatives, like in this case for centering the dialog
+  app-search-dialog {
+    .p-dialog {
+      min-width: 100vw !important;
+      max-height: 1000% !important;
+      margin-top: 30vh !important;
+      margin-left: -14rem;
+    }
+  }
+
+  app-settings-dialog {
+    .p-dialog {
+      min-width: 100vw !important;
+      max-height: 1000% !important;
+      margin-top: 110vh !important;
+      margin-left: -14rem;
+    }
+  }
+}
