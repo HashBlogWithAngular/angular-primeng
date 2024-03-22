@@ -79,4 +79,59 @@ p-toolbar {
   }
 }
 
+@media (max-width: 600px) {
+  p-toolbar {
+    padding: 0;
 
+    .toolbar-row {
+      &.first {
+        .p-toolbar-group-start {
+          .logo-image {
+            width: 2rem;
+            height: 2rem;
+          }
+
+          .blog-title {
+            margin: 0;
+            h1 {
+              font-size: 1rem;
+            }
+          }
+        }
+        .p-toolbar-group-end {
+          justify-content: flex-end;
+          width: 40%;
+          .controls {
+            transform: scale(0.8);
+
+            p-inputSwitch {
+              transform: scale(0.7);
+            }
+          }
+        }
+      }
+
+      &.second {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .p-toolbar-group-start {
+          .social {
+            margin: 0 0 1rem;
+          }
+        }
+      }
+
+      &.third {
+        // will have to be adjusted to a dropdown
+        // to handle cases where there are more than 3 series
+        .series {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

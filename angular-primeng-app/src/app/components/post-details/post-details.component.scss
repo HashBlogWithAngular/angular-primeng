@@ -69,3 +69,23 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .post-details-page {
+    article {
+      max-width: 90vw;
+
+      .title {
+        font-size: 1.3rem;
+      }
+
+      .content {
+        line-height: 2rem;
+
+        iframe {
+          height: calc(50vw * 0.9);
+        }
+      }
+    }
+  }
+}

@@ -20,3 +20,20 @@
     margin-bottom: 2rem;
   }
 }
+
+@media (max-width: 600px) {
+  .series-view {
+    width: 90vw;
+    .cards-wrapper {
+      p-card {
+        width: 100%;
+        margin: 0.5rem 0;
+        .card-title {
+          h3 {
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+}
