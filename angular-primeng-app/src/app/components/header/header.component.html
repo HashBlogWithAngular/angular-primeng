@@ -1,14 +1,12 @@
 <p-toolbar>
   <div class="toolbar-row first">
     <div class="p-toolbar-group-start">
-      @if (showMainHeader) {
       <a routerLink="/" class="blog-title">
+        @if (showMainHeader) {
         <img class="logo-image" src="{{blogImage}}" alt="logo" />
-      </a>
-      } @else {
-      <app-sidenav></app-sidenav>
-      }
-      <a routerLink="/" class="blog-title">
+        } @else {
+        <app-sidenav></app-sidenav>
+        }
         <h1>{{blogName}}</h1>
       </a>
     </div>
