@@ -3,6 +3,6 @@
   <router-outlet />
 </div>
 <app-footer />
-@if (enableScrollUp) {
-<p-button class="pageUpButton" (click)="goPageTop()" icon="pi pi-angle-up" [rounded]="true" size="small"></p-button>
+@if (showScrollButton) {
+<p-button class="pageUpButton" (click)="scrollToTop()" icon="pi pi-angle-up" [rounded]="true" size="small"></p-button>
 }
