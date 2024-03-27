@@ -57,7 +57,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 	@HostListener('window:scroll', [])
 	onWindowScroll() {
-		const yOffset = window.pageYOffset || document.documentElement.scrollTop;
+		const yOffset = window.scrollY || document.documentElement.scrollTop;
 		if (yOffset > 500) {
 			this.showScrollButton = true;
 		} else {
