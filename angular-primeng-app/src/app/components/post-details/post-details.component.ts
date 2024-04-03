@@ -73,7 +73,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 				this.blogName = this.blogInfo.title;
         const { __typename, ...links } = data.links;
         this.blogSocialLinks = links;
-		this.isTeam = this.blogInfo.isTeam ? true : false;
+		    this.isTeam = this.blogInfo.isTeam ? true : false;
 			});
 		this.post$ = this.blogService.getSinglePost(this.blogURL, this.postSlug);
 		this.querySubscription = this.blogService
