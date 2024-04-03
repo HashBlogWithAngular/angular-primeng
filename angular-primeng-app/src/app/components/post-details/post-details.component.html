@@ -13,10 +13,10 @@
                 }
             </p-avatarGroup>
           } @else {
-             <p-avatar [image]="coAuthor.profilePicture" size="large"  shape="circle" title="{{ coAuthor.username}}"></p-avatar>
+             <p-avatar [image]="post.author.profilePicture" size="large"  shape="circle" title="{{ post.author.name}}"></p-avatar>
             }
           <div class="author-text">
-            <span class="author-name">{{post.author.name}} {{isTeam && post.coAuthors.length > 0 ? 'with ' +post.coAuthors.length + ' co-author' + (post.coAuthors.length > 1 ? 's' : '') : ''}}</span>
+            <span class="author-name">{{post.author.name}} {{isTeam && post.coAuthors.length > 0 ? 'with ' + post.coAuthors.length + ' co-author' + (post.coAuthors.length > 1 ? 's' : '') : ''}}</span>
             <div class="post-meta">
               <p-tag value="{{post.publishedAt | date: 'MMM dd, yyyy' }}"><i
                   class="tag-icon pi pi-calendar"></i></p-tag>
