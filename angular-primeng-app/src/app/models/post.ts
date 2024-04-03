@@ -5,6 +5,7 @@ export type Post = {
   readTimeInMinutes: number;
   tags: Tag[];
   author: Author;
+  coAuthors: coAuthor[];
   coverImage: CoverImage;
   content: Content;
   publishedAt: string;
@@ -26,6 +27,11 @@ export interface Author {
   name: string;
   profilePicture: string;
   socialMediaLinks: SocialMediaLinks;
+}
+
+export interface coAuthor {
+  username: string;
+  profilePicture: string;
 }
 
 export interface SocialMediaLinks {

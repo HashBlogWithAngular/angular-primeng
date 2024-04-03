@@ -18,6 +18,8 @@ import { InputSwitchModule } from "primeng/inputswitch";
 import { SanitizerHtmlPipe } from "../../pipes/sanitizer-html.pipe";
 import { YoutubeVideoEmbedDirective } from "../../directives/youtube-video-embed.directive";
 import { ViewportScroller } from "@angular/common";
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 
 @Component({
 	selector: "app-post-details",
@@ -36,12 +38,15 @@ import { ViewportScroller } from "@angular/common";
 		ButtonModule,
 		InputSwitchModule,
 		SearchDialogComponent,
+		AvatarGroupModule,
+		AvatarModule,
 	],
 	templateUrl: "./post-details.component.html",
 	styleUrl: "./post-details.component.scss",
 })
 export class PostDetailsComponent implements OnInit, OnDestroy {
 	checked: boolean = true;
+	isTeam: boolean = false;
 	selectedTheme: string = "dark";
   blogURL!: string;
 	blogInfo!: BlogInfo;
@@ -68,6 +73,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 				this.blogName = this.blogInfo.title;
         const { __typename, ...links } = data.links;
         this.blogSocialLinks = links;
+		    this.isTeam = this.blogInfo.isTeam ? true : false;
 			});
 		this.post$ = this.blogService.getSinglePost(this.blogURL, this.postSlug);
 		this.querySubscription = this.blogService
