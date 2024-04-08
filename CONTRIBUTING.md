@@ -8,7 +8,12 @@ All types of contributions are encouraged and valued. Please make sure to read t
 - [Question or Problem?](#question-or-problem)
 - [Features vs Bugs](#features-vs-bugs)
 - [For all Issues](#for-all-issues)
-- [Submission Guidelines](#submission-guidelines)
+- [Submitting an Issue](#submitting-an-issue)
+- ['Needs Triage' issue label](#needs-triage-issue-label)
+- [Standardization Across App Versions](#standardization-across-app-versions)
+- [Before you start working on an Issue](#before-you-start-working-on-an-issue)
+- [Submitting a Pull Request (PR)](#submitting-a-pull-request-pr)
+- [Reviewing a Pull Request](#reviewing-a-pull-request)
 - [Coding Rules](#coding-rules)
 - [Commit Message Guidelines](#commit-message-guidelines)
 
@@ -43,11 +48,9 @@ Not all issues are bug fixes! Please understand the difference between a Feature
 
 This process allows us to better coordinate our efforts, prevent duplication of work, and help you to craft the change so that it is successfully accepted into the project.
 
-## Submission Guidelines
+## Submitting an Issue
 
-### Submitting an Issue
-
-Before opening an issue, please check the tracker to see if a similar issue has been raised. Existing discussions may provide useful insights or workarounds.
+Before opening an issue, please search through Issues to see if a similar issue has been raised. Existing discussions may provide useful insights or workarounds.
 
 To expedite bug fixes, a minimal reproduction of the issue is required. This concise example helps in swiftly identifying and addressing the problem.
 
@@ -59,11 +62,25 @@ It is always a good practice to look up existing issues and ensure your new issu
 format. This helps maintain consistency and makes it easier for others to understand and collaborate on the
 issue
 
-### 'Needs Triage' issue label
+## 'Needs Triage' issue label
 
 Every new issue is tagged with the "needs triage" label, signifying that it requires review and assessment by a core team member. This process ensures that issues are appropriately prioritized and assigned, fostering a collaborative environment where tasks are synchronized to prevent conflicts. While you focus on addressing an issue, it's important to recognize that others may be working on related tasks. Therefore, the "needs triage" label serves as a precautionary measure, indicating that the issue is not yet ready for immediate attention. The issue will be ready to work on, once the "needs triage" label is removed.
 
-### Submitting a Pull Request (PR)
+# Standardization Across App Versions
+
+All app versions maintain consistent file structures, functionalities, and feature implementations deliberately. The variations between versions are minimal, primarily revolving around the utilization of UI components where a UI library is used.
+
+Once an issue has been resolved in one app version, the same implementation must be extended to all other versions, unless a superior alternative is proposed and accepted.
+
+Any new implementation suggestion must be discussed to verify it's suitable for adoption across all app versions. For a good visual representation use the [Issue Tracker](https://anguhashblog.com/issue-tracker)
+
+## Before you start working on an Issue
+
+Before commencing work on any issue, it is essential to confirm that it has not already been addressed. Utilize the [Issue Tracker](https://anguhashblog.com/issue-tracker) tool to check for existing implementations and their corresponding app versions. If the chosen issue has already been resolved in a different app version, consult the [Issue Tracker](https://anguhashblog.com/issue-tracker) to review the existing implementation and replicate it accordingly.
+
+Even if the issue is labeled as not implemented, it remains your responsibility to examine the app's codebase and confirm the absence of the issue.
+
+## Submitting a Pull Request (PR)
 
 Before you submit your Pull Request (PR) consider the following guidelines:
 
@@ -109,7 +126,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 
 It is always a good practice to look up already merged PRs and ensure your new PR matches the established format. This helps maintain consistency and makes it easier for others to understand and collaborate.
 
-### Reviewing a Pull Request
+## Reviewing a Pull Request
 
 I reserve the right not to accept pull requests from community members who haven't been good citizens of the community.
 
