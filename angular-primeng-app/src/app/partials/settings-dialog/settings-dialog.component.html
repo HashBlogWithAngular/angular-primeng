@@ -22,6 +22,17 @@
           <i class="pi pi-times" (click)="newBlogInput=''"></i>
         }
         <input type="text" pInputText placeholder="Type a Blog URL" [(ngModel)]="newBlogInput" />
+        <div class="error">
+          @if (emptyInput) {
+          <small>Please provide a valid Hashnode Blog URL.</small>
+          }
+          @if (noBlogFound) {
+          <small>No Hashnode Blog found.</small>
+          }
+          @if (invalidInput) {
+          <small>Invalid input, please try again.</small>
+          }
+        </div>
      </span>
     </div>
     <div class="dialog-actions">

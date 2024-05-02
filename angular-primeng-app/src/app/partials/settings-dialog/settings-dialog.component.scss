@@ -31,6 +31,16 @@ p-dialog {
     input {
       margin : 1rem 0;
     }
+
+
+    .error {
+      color: red;
+      position: absolute;
+      top: 4rem;
+      font-size: 0.9rem;
+      text-align: center;
+      font-weight: 300;
+    }
   }
 }
 
