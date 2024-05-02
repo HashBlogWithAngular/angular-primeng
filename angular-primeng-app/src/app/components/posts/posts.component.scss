@@ -1,5 +1,5 @@
 .posts-view {
-  width: 70vw;
+  width: 80vw;
   min-height: 67.2vh;
   padding: 0.5rem 0;
 
@@ -11,6 +11,10 @@
 
     .post-card {
       display: flex;
+    }
+
+    .card-title {
+      min-height: 3.5rem;
     }
   }
 
