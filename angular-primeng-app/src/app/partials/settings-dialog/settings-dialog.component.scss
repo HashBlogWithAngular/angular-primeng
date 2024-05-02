@@ -15,7 +15,7 @@ p-dialog {
     }
 
     p-button {
-      margin: 0.5rem 0;
+      margin: 1.5rem 0;
     }
 
     p {
@@ -31,7 +31,16 @@ p-dialog {
     input {
       margin : 1rem 0;
     }
-  }
 
+
+    .error {
+      color: red;
+      position: absolute;
+      top: 4rem;
+      font-size: 0.9rem;
+      text-align: center;
+      font-weight: 300;
+    }
+  }
 }
 

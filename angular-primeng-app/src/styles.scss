@@ -7,7 +7,7 @@ a {
 }
 
 .post-card {
-  width: 20vw;
+  width: 23vw;
   margin: 1rem;
   cursor: pointer;
 
@@ -18,12 +18,14 @@ a {
 
   .p-card {
     height: 100%;
+    width: 100%;
   }
 
   .p-card-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.7rem;
     font-weight: 500;
+    min-height: 3.5rem;
   }
 
   .p-card-content {
@@ -33,7 +35,7 @@ a {
 
 .card-image {
   width: 100%;
-  height: 10rem;
+  height: 12rem;
   overflow: hidden;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -90,6 +92,10 @@ article {
         }
       }
     }
+  }
+
+  .p-card-title {
+    min-width: 75vw;
   }
 
   // !important statement shall only be used if there are no alternatives, like in this case for overwriting very persistent styles set by PrimeNG

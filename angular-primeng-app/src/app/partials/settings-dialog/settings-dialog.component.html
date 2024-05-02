@@ -4,10 +4,10 @@
 <p-dialog [(visible)]="visible" [style]="{width: '27vw'}">
   @if (blogURLChanged) {
     <div class="dialog-content">
-      <p>Blog URL changed and set in local storage</p>
-      <p>Reload the page to see your content loading</p>
-      <p>When resetting you may need to click on</p>
-      <p>the logo image to load the content again</p>
+      <p>Blog URL was changed</p>
+      <p>You are seeing blog posts</p>
+      <p>from the following blog:</p>
+      <h3>{{blogURL}}</h3>
       <div class="dialog-actions">
         <p-button label="Reset" (click)="resetBlogURL()" class="p-button-secondary"></p-button>
       </div>
@@ -18,15 +18,26 @@
       <p>try AnguHashBlog</p>
       <small>with another Hashnode blog </small>
       <span class="p-input-icon-right">
-        @if (newBlogURL) {
-          <i class="pi pi-times" (click)="newBlogURL=''"></i>
+        @if (newBlogInput) {
+          <i class="pi pi-times" (click)="newBlogInput=''"></i>
         }
-        <input type="text" pInputText placeholder="Type a Blog URL" [(ngModel)]="newBlogURL" />
+        <input type="text" pInputText placeholder="Type a Blog URL" [(ngModel)]="newBlogInput" />
+        <div class="error">
+          @if (emptyInput) {
+          <small>Please provide a valid Hashnode Blog URL.</small>
+          }
+          @if (noBlogFound) {
+          <small>No Hashnode Blog found.</small>
+          }
+          @if (invalidInput) {
+          <small>Invalid input, please try again.</small>
+          }
+        </div>
      </span>
     </div>
     <div class="dialog-actions">
       <div class="dialog-actions">
-        <p-button label="Change" (click)="changeBlogURL(); newBlogURL=''" class="p-button-secondary"></p-button>
+        <p-button label="Change" (click)="changeBlogURL(); newBlogInput=''" class="p-button-secondary"></p-button>
       </div>
     </div>
     }
