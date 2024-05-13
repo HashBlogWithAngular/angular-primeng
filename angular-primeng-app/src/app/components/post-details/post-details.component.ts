@@ -20,6 +20,7 @@ import { ButtonModule } from "primeng/button";
 import { InputSwitchModule } from "primeng/inputswitch";
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
+import { RemoveSpecialCharsPipe  } from "../../pipes/special-characters-remover.pipe";
 
 @Component({
 	selector: "app-post-details",
@@ -40,6 +41,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 		SearchDialogComponent,
 		AvatarGroupModule,
 		AvatarModule,
+		RemoveSpecialCharsPipe 
 	],
 	templateUrl: "./post-details.component.html",
 	styleUrl: "./post-details.component.scss",
