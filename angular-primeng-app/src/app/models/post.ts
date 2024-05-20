@@ -24,7 +24,9 @@ export interface Tag {
 }
 
 export interface Author {
+  id : string,
   name: string;
+  username : string ,
   profilePicture: string;
   socialMediaLinks: SocialMediaLinks;
 }
