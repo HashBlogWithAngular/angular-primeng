@@ -7,13 +7,13 @@
         <div class="author-info">
           @if (isTeam) {
             <p-avatarGroup styleClass="mb-3" >
-               <p-avatar [image]="post.author.profilePicture" size="large" shape="circle" title="{{ post.author.name}}"></p-avatar>
+               <p-avatar [image]="post.author.profilePicture" size="large" shape="circle" title="{{ post.author.username}}"></p-avatar>
                @for (coAuthor of post.coAuthors; track coAuthor.username) {
                  <p-avatar [image]="coAuthor.profilePicture" size="large"  shape="circle" title="{{ coAuthor.username}}"></p-avatar>
                 }
             </p-avatarGroup>
           } @else {
-             <p-avatar [image]="post.author.profilePicture" size="large"  shape="circle" title="{{ post.author.name}}"></p-avatar>
+             <p-avatar [image]="post.author.profilePicture" size="large"  shape="circle" title="{{ post.author.username}}"></p-avatar>
             }
           <div class="author-text">
             <span class="author-name">{{post.author.name}} {{isTeam && post.coAuthors.length > 0 ? 'with ' + post.coAuthors.length + ' co-author' + (post.coAuthors.length > 1 ? 's' : '') : ''}}</span>

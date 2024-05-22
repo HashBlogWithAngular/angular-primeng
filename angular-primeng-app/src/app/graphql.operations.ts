@@ -136,7 +136,9 @@ export const GET_SINGLE_POST = gql`
 					name
 				}
 				author {
+					id
 					name
+					username
 					profilePicture
 				}
 				coAuthors {
@@ -172,7 +174,9 @@ export const SEARCH_POSTS = gql`
 						url
 					}
 					author {
+						id
 						name
+						username
 					}
 					publishedAt
 					title
