@@ -72,11 +72,11 @@ All app versions maintain consistent file structures, functionalities, and featu
 
 Once an issue has been resolved in one app version, the same implementation must be extended to all other versions, unless a superior alternative is proposed and accepted.
 
-Any new implementation suggestion must be discussed to verify it's suitable for adoption across all app versions. For a good visual representation use the [Issue Tracker](https://anguhashblog.com/issue-tracker)
+Any new implementation suggestion must be discussed to verify it's suitable for adoption across all app versions.
 
 ## Before you start working on an Issue
 
-Before commencing work on any issue, it is essential to confirm that it has not already been addressed. Utilize the [Issue Tracker](https://anguhashblog.com/issue-tracker) tool to check for existing implementations and their corresponding app versions. If the chosen issue has already been resolved in a different app version, consult the [Issue Tracker](https://anguhashblog.com/issue-tracker) to review the existing implementation and replicate it accordingly.
+Before commencing work on any issue, it is essential to confirm that it has not already been addressed. Please check for existing implementations and if the chosen issue has already been resolved in a different app version, review the existing implementation and replicate it accordingly.
 
 Even if the issue is labeled as not implemented, it remains your responsibility to examine the app's codebase and confirm the absence of the issue.
 
