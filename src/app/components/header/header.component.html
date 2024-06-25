@@ -2,28 +2,21 @@
   <div class="toolbar-row first">
     <div class="p-toolbar-group-start">
       <a routerLink="/" class="blog-title">
-        @if (showMainHeader) {
         <img class="logo-image" src="{{blogImage}}" alt="logo" />
-        } @else {
-        <app-sidenav></app-sidenav>
-        }
         <h1>{{blogName}}</h1>
       </a>
     </div>
 
     <div class="p-toolbar-group-end">
       <div class="controls">
-        @if (showMainHeader) {
         <app-search-dialog [blogId]="blogId"></app-search-dialog>
         <app-settings-dialog></app-settings-dialog>
-        }
         <p-inputSwitch [(ngModel)]="checked" (click)="onThemeChange(checked ? 'dark' : 'light')"
           id="theme-switch"></p-inputSwitch>
       </div>
     </div>
   </div>
 
-  @if (showMainHeader) {
   <div class="toolbar-row second">
     <div class="p-toolbar-group-start">
       <div class="social">
@@ -58,6 +51,5 @@
       }
     </div>
   </div>
-  }
 
 </p-toolbar>

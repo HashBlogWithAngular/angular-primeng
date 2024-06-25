@@ -1,4 +1,18 @@
 <div class="post-details-page">
+  <p-toolbar>
+    <div class="p-toolbar-group-start">
+      <app-sidenav></app-sidenav>
+      <a routerLink="/" class="logo">
+        <h1>{{blogName}}</h1>
+      </a>
+    </div>
+    <div class="p-toolbar-group-end">
+      <app-search-dialog [blogId]="blogId"></app-search-dialog>
+      <p-inputSwitch [(ngModel)]="checked" (click)="onThemeChange(checked ? 'dark' : 'light')"
+        id="theme-switch"></p-inputSwitch>
+    </div>
+  </p-toolbar>
+
   @if (post$ | async; as post) {
     <article>
       <h1 class="title">{{ post.title }}</h1>
@@ -34,4 +48,5 @@
       <div class="content" [innerHTML]="post.content.html | sanitizerHtml" youtubeVideoEmbed></div>
     </article>
   }
+  <app-footer></app-footer>
 </div>
