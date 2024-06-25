@@ -15,14 +15,12 @@ import { InputSwitchModule } from "primeng/inputswitch";
 import { DialogModule } from "primeng/dialog";
 import { SettingsDialogComponent } from "../../partials/settings-dialog/settings-dialog.component";
 import { FollowDialogComponent } from "../../partials/follow-dialog/follow-dialog.component";
-import { SidenavComponent } from "../sidenav/sidenav.component";
 
 @Component({
 	selector: "app-header",
 	standalone: true,
 	imports: [
 		AsyncPipe,
-    SidenavComponent,
 		SearchDialogComponent,
 		SettingsDialogComponent,
 		FollowDialogComponent,
@@ -38,7 +36,6 @@ import { SidenavComponent } from "../sidenav/sidenav.component";
 	styleUrl: "./header.component.scss",
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  showMainHeader: boolean = true;
 	blogURL!: string;
 	blogInfo!: BlogInfo;
 	blogId: string = "";
@@ -84,12 +81,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 			});
 		this.blogService.getSeriesList(this.blogURL).subscribe((data) => {
 			this.seriesList = data;
-		});
-		this.router.events.subscribe((event) => {
-			if (event instanceof NavigationEnd) {
-				this.showMainHeader =
-					!this.route.snapshot.firstChild?.paramMap.has("postSlug");
-			}
 		});
 	}
 
