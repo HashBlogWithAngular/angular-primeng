@@ -1,5 +1,5 @@
 [build]
-  base = "/angular-primeng-app"
+  base = "/"
   command = "npm run build:prod"
   publish = "dist/browser"
 
