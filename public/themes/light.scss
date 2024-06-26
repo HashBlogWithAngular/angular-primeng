@@ -1,0 +1,47 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+
+body {
+  background-color: var(--gray-50);
+}
+
+.p-card,
+.p-toolbar {
+  background-color: var(--gray-200);
+}
+
+.p-tag {
+  background-color: var(--blue-100);
+  color: var(--gray-600)
+}
+
+.p-button {
+  background-color: var(--blue-200);
+  color: var(--gray-600);
+  border: none;
+}
+
+.transparent-button {
+  .p-button-icon-only {
+    background-color: transparent;
+  }
+}
+
+.social-link {
+  a {
+    i {
+      color: var(--blue-600);
+    }
+  }
+}
+
+article {
+  a {
+    color: var(--blue-400);
+  }
+  pre {
+    background-color: #444;
+    color: #eaeaea;
+  }
+}
+
+

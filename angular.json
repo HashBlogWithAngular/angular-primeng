@@ -26,18 +26,20 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
             ],
             "styles": [
               "src/styles.scss",
               {
-                "input": "src/assets/themes/dark.scss",
+                "input": "public/themes/dark.scss",
                 "bundleName": "dark",
                 "inject": false
               },
               {
-                "input": "src/assets/themes/light.scss",
+                "input": "public/themes/light.scss",
                 "bundleName": "light",
                 "inject": false
               },
@@ -102,8 +104,10 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
             ],
             "styles": [
               "src/styles.scss",
