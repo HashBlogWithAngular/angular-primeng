@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	blogInfo!: BlogInfo;
 	blogId: string = "";
 	blogName: string = "";
-	blogImage: string = "/assets/images/anguhashblog-logo-purple-bgr.jpg";
+	blogImage: string = "/images/anguhashblog-logo-purple-bgr.jpg";
 	blogSocialLinks!: BlogLinks;
 	checked: boolean = true;
 	selectedTheme: string = "dark";
@@ -64,7 +64,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 				if (this.blogInfo.isTeam && this.blogInfo.favicon) {
 					this.blogImage = this.blogInfo.favicon;
 				} else {
-					this.blogImage = "/assets/images/anguhashblog-logo-purple-bgr.jpg";
+					this.blogImage = "/images/anguhashblog-logo-purple-bgr.jpg";
 				}
 				if (!this.blogInfo.isTeam) {
 					this.blogService.getAuthorInfo(this.blogURL).subscribe((data) => {
@@ -72,7 +72,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 							this.blogImage = data.profilePicture;
 						} else {
 							this.blogImage =
-								"/assets/images/anguhashblog-logo-purple-bgr.jpg";
+								"/images/anguhashblog-logo-purple-bgr.jpg";
 						}
 					});
 				}
