@@ -2,8 +2,8 @@ import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ThemeService } from "../../services/theme.service";
 import { BlogService } from "../../services/blog.service";
-import { AsyncPipe, KeyValuePipe } from "@angular/common";
-import { ActivatedRoute, NavigationEnd, Router, RouterLink } from "@angular/router";
+import { KeyValuePipe } from "@angular/common";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { BlogInfo, BlogLinks } from "../../models/blog-info";
 import { SeriesList } from "../../models/post";
 import { SearchDialogComponent } from "../../partials/search-dialog/search-dialog.component";
@@ -20,7 +20,6 @@ import { FollowDialogComponent } from "../../partials/follow-dialog/follow-dialo
 	selector: "app-header",
 	standalone: true,
 	imports: [
-		AsyncPipe,
 		SearchDialogComponent,
 		SettingsDialogComponent,
 		FollowDialogComponent,
@@ -46,8 +45,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 	selectedTheme: string = "dark";
 	seriesList!: SeriesList[];
 	visible: boolean = false;
-  private route = inject(ActivatedRoute);
-	private router = inject(Router);
 	themeService: ThemeService = inject(ThemeService);
 	blogService: BlogService = inject(BlogService);
 

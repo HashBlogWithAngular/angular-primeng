@@ -29,7 +29,7 @@ export class BlogService {
 	getBlogURL(): string {
 		if (isPlatformBrowser(this.platformId)) {
 			return (
-				localStorage.getItem(this.localStorageKey) ||
+				localStorage.getItem(this.localStorageKey) ??
 				"hashnode.anguhashblog.com"
 			);
 		}
