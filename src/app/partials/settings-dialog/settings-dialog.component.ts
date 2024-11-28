@@ -7,89 +7,96 @@ import { InputTextModule } from "primeng/inputtext";
 import { ButtonModule } from "primeng/button";
 
 @Component({
-	selector: "app-settings-dialog",
-	standalone: true,
-	imports: [
-		DialogModule,
-		InputTextModule,
-		ButtonModule,
-		FormsModule,
-		ReactiveFormsModule,
-	],
-	templateUrl: "./settings-dialog.component.html",
-	styleUrl: "./settings-dialog.component.scss",
+  selector: "app-settings-dialog",
+  standalone: true,
+  imports: [
+    DialogModule,
+    InputTextModule,
+    ButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  templateUrl: "./settings-dialog.component.html",
+  styleUrl: "./settings-dialog.component.scss",
 })
 export class SettingsDialogComponent implements OnInit {
-	visible = false;
-	blogURL: string = "hashnode.anguhashblog.com";
+  visible = false;
+  blogURL: string = "hashnode.anguhashblog.com";
   newBlogInput: string = "";
-	newBlogURL: string = "";
-	blogURLChanged: boolean = false;
-	noBlogFound: boolean = false;
-	emptyInput: boolean = false;
-	invalidInput: boolean = false;
-	blogService: BlogService = inject(BlogService);
+  newBlogURL: string = "";
+  blogURLChanged: boolean = false;
+  noBlogFound: boolean = false;
+  emptyInput: boolean = false;
+  invalidInput: boolean = false;
+  blogService: BlogService = inject(BlogService);
 
-	ngOnInit() {
-		this.blogURL = this.blogService.getBlogURL();
-		if (this.blogURL === "hashnode.anguhashblog.com") {
-			this.blogURLChanged = false;
-		} else {
-			this.blogURLChanged = true;
-		}
-	}
+  ngOnInit() {
+    this.blogURL = this.blogService.getBlogURL();
+    this.blogURLChanged = this.blogURL !== "hashnode.anguhashblog.com";
+  }
 
-	changeBlogURL(): void {
-		this.noBlogFound = false;
-		if (this.newBlogInput === "") {
-			this.emptyInput = true;
-			return;
-		} else if ( this.newBlogInput !== "") {
-      this.emptyInput = false;
+  changeBlogURL(): void {
+    // Reset flags
+    this.noBlogFound = false;
+    this.emptyInput = false;
+    this.invalidInput = false;
 
-      if (this.newBlogInput.includes("https://") || this.newBlogInput.endsWith("/")) {
-        const cleanedBlogURL = this.newBlogInput.split("https://")[1];
-        this.newBlogURL = cleanedBlogURL.split("/")[0];
+    // Validate input
+    if (!this.newBlogInput.trim()) {
+      this.emptyInput = true;
+      return;
+    }
 
-      } else {
-        this.newBlogURL = this.newBlogInput;
-      }
+    // Clean and parse the blog URL
+    this.newBlogURL = this.cleanBlogURL(this.newBlogInput);
 
-			this.blogService.getBlogInfo(this.newBlogURL).subscribe((blogInfo) => {
-				if (blogInfo === null) {
-					this.noBlogFound = true;
-					this.blogURLChanged = false;
-					this.newBlogInput = "";
-				} else {
-					this.blogService.setBlogURL(this.newBlogURL);
-					this.blogURL = this.blogService.getBlogURL();
-          this.blogURLChanged = true;
-          this.visible = false;
-		      window.location.reload();
-				}
-			});
-		} else if (this.blogURL === "hashnode.anguhashblog.com") {
-      this.blogURLChanged = false;
-    } else {
-			this.noBlogFound = true;
-			this.emptyInput = false;
-			this.blogURLChanged = false;
+    if (!this.newBlogURL) {
       this.invalidInput = true;
-			this.newBlogInput = "";
-		}
-	}
+      return;
+    }
 
+    // Check if it's the default URL case
+    if (this.newBlogURL === "hashnode.anguhashblog.com") {
+      this.blogURLChanged = false;
+      return;
+    }
 
-	resetBlogURL(): void {
-		this.blogService.resetBlogURL();
-		this.blogURL = this.blogService.getBlogURL();
-		this.emptyInput = false;
-		this.blogURLChanged = false;
-		this.visible = false;
-		window.location.reload();
-	}
+    // Validate blog URL via the service
+    this.blogService.getBlogInfo(this.newBlogURL).subscribe((blogInfo) => {
+      if (blogInfo === null) {
+        // Blog not found
+        this.noBlogFound = true;
+        this.blogURLChanged = false;
+        this.newBlogInput = "";
+      } else {
+        // Valid blog found
+        this.blogService.setBlogURL(this.newBlogURL);
+        this.blogURL = this.blogService.getBlogURL();
+        this.blogURLChanged = true;
+        this.visible = false;
+        window.location.reload();
+      }
+    });
+  }
 
-	showDialog() {
-		this.visible = true;
-	}
+  resetBlogURL(): void {
+    this.blogService.resetBlogURL();
+    this.blogURL = this.blogService.getBlogURL();
+    this.emptyInput = false;
+    this.blogURLChanged = false;
+    this.visible = false;
+    window.location.reload();
+  }
+
+  showDialog() {
+    this.visible = true;
+  }
+
+  private cleanBlogURL(input: string): string {
+    // Strip "https://" and trailing slashes if present
+    if (input.includes("https://")) {
+      input = input.split("https://")[1];
+    }
+    return input.endsWith("/") ? input.slice(0, -1) : input;
+  }
 }

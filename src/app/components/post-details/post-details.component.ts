@@ -1,6 +1,6 @@
 import { Component, inject, Input, OnDestroy, OnInit } from "@angular/core";
 import { BlogService } from "../../services/blog.service";
-import { AsyncPipe, DatePipe } from "@angular/common";
+import { AsyncPipe, DatePipe, ViewportScroller } from "@angular/common";
 import { Post, SeriesList } from "../../models/post";
 import { Observable, Subscription } from "rxjs";
 import { RouterLink } from "@angular/router";
@@ -12,7 +12,6 @@ import { FooterComponent } from "../footer/footer.component";
 import { ThemeService } from "../../services/theme.service";
 import { SanitizerHtmlPipe } from "../../pipes/sanitizer-html.pipe";
 import { YoutubeVideoEmbedDirective } from "../../directives/youtube-video-embed.directive";
-import { ViewportScroller } from "@angular/common";
 
 import { TagModule } from "primeng/tag";
 import { ToolbarModule } from "primeng/toolbar";
@@ -73,7 +72,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 				this.blogName = this.blogInfo.title;
         const { __typename, ...links } = data.links;
         this.blogSocialLinks = links;
-		    this.isTeam = this.blogInfo.isTeam ? true : false;
+			this.isTeam = this.blogInfo.isTeam ?? false;
 			});
 		this.post$ = this.blogService.getSinglePost(this.blogURL, this.postSlug);
 		this.querySubscription = this.blogService
