@@ -3,7 +3,12 @@
   command = "npm run build:prod"
   publish = "dist/browser"
 
-  [[redirects]]
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[plugins]]
+  package = "netlify-plugin-rollup"
+  [plugins.inputs]
+    external = ["@rollup/rollup-linux-x64-gnu"]
