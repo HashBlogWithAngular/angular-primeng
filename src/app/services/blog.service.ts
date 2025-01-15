@@ -18,7 +18,7 @@ import { isPlatformBrowser } from "@angular/common";
 	providedIn: "root",
 })
 export class BlogService {
-	blogURL: string = "hashblog-withangular.hashnode.dev";
+	blogURL: string = "blog-hashnode.withangular.dev";
 	private readonly localStorageKey = "userBlogURL";
 
 	constructor(
@@ -30,10 +30,10 @@ export class BlogService {
 		if (isPlatformBrowser(this.platformId)) {
 			return (
 				localStorage.getItem(this.localStorageKey) ??
-				"hashblog-withangular.hashnode.dev"
+				"blog-hashnode.withangular.dev"
 			);
 		}
-		return "hashblog-withangular.hashnode.dev";
+		return "blog-hashnode.withangular.dev";
 	}
 
 	setBlogURL(newBlogURL: string): void {
@@ -45,7 +45,7 @@ export class BlogService {
 
 	resetBlogURL(): void {
 		localStorage.removeItem(this.localStorageKey);
-		this.blogURL = "hashblog-withangular.hashnode.dev";
+		this.blogURL = "blog-hashnode.withangular.dev";
 	}
 
 	getBlogInfo(host: string): Observable<BlogInfo> {
