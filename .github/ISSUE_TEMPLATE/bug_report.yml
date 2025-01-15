@@ -1,5 +1,5 @@
 name: 🐛 Bug report
-description: Create a bug report to help us improve AnguHashBlog
+description: Create a bug report to help us improve HashnodeWithAngular
 title: "Bug: "
 labels: [👀 needs triage, 🐛 bug]
 body:
@@ -48,5 +48,5 @@ body:
       label: I would be willing to submit a PR to fix this issue
       description: Assistance is provided if you need help submitting a pull request
       options:
-        - label: "Yes and I have read the [Contribution Guide](https://anguhashblog.com/contributing) and I agree to follow this project's [Code of Conduct](https://anguhashblog.com/code-of-conduct)"
+        - label: "Yes and I have read the [Contribution Guide](https://hashnode.withangular.dev/contributing) and I agree to follow this project's [Code of Conduct](https://hashnode.withangular.dev/code-of-conduct)"
         - label: 'No'

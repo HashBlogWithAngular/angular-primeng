@@ -21,7 +21,7 @@ import { ButtonModule } from "primeng/button";
 })
 export class SettingsDialogComponent implements OnInit {
   visible = false;
-  blogURL: string = "hashblog-withangular.hashnode.dev";
+  blogURL: string = "blog-hashnode.withangular.dev";
   newBlogInput: string = "";
   newBlogURL: string = "";
   blogURLChanged: boolean = false;
@@ -32,7 +32,7 @@ export class SettingsDialogComponent implements OnInit {
 
   ngOnInit() {
     this.blogURL = this.blogService.getBlogURL();
-    this.blogURLChanged = this.blogURL !== "hashblog-withangular.hashnode.dev";
+    this.blogURLChanged = this.blogURL !== "blog-hashnode.withangular.dev";
   }
 
   changeBlogURL(): void {
@@ -56,7 +56,7 @@ export class SettingsDialogComponent implements OnInit {
     }
 
     // Check if it's the default URL case
-    if (this.newBlogURL === "hashblog-withangular.hashnode.dev") {
+    if (this.newBlogURL === "blog-hashnode.withangular.dev") {
       this.blogURLChanged = false;
       return;
     }
